@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import { buildDevServer } from './buildDevServer';
 import { buildLoaders } from './buildLoaders';
 import { buildPlugins } from './buildPlugins';
 import { buildResolvers } from './buildResolvers';
@@ -17,16 +18,11 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
         resolve: buildResolvers(options),
         output: {
             path: paths.output,
-            filename: "index.js",
-            library: {
-                type: 'commonjs2',
-            },
+            filename: "[name].[contenthash].js",
             clean: true,
         },
-        externals: {
-            react: 'commonjs react',
-            'react-dom': 'commonjs react-dom',
-        },
+        devtool: isDev && 'inline-source-map',
+        devServer: isDev ? buildDevServer(options) : undefined,
         plugins: buildPlugins(options),
     };
 }
