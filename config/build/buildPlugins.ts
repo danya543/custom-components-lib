@@ -4,8 +4,6 @@ import webpack from "webpack";
 import { Configuration } from "webpack";
 import { BuildOptions } from "./types/types";
 import path from "path";
-import CopyPlugin from 'copy-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export function buildPlugins({ mode, paths, analyzer }: BuildOptions): Configuration['plugins'] {
     const isDev = mode === 'development';
@@ -20,14 +18,6 @@ export function buildPlugins({ mode, paths, analyzer }: BuildOptions): Configura
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css'
         }));
-        plugins.push(new CopyPlugin({
-            patterns: [
-                { from: path.resolve(paths.public, 'locales'), to: path.resolve(paths.output, 'locales') },
-            ],
-        }),)
-    }
-    if (analyzer) {
-        plugins.push(new BundleAnalyzerPlugin());
     }
 
     return plugins;
