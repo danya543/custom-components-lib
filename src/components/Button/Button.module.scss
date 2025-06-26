@@ -1,7 +1,5 @@
 :root {
-  --main-bgColor: rgb(144, 202, 249);
-  --main-hover-bgColor: rgba(144, 202, 249, 0.5);
-  --main-disabled-bgColor: rgba(144, 202, 249, 0.3);
+  --main-bgColor: #90caf9;
   --main-color: white;
 }
 
@@ -9,17 +7,11 @@
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
-  background: transparent;
   border: none;
   border-radius: 7px;
   outline: none;
 
-  &:hover:not(:disabled) {
-    background: var(--main-hover-bgColor);
-  }
-
-  &:disabled:not(.contained) {
-    cursor: not-allowed;
+  &:hover {
     opacity: 0.5;
   }
 
@@ -30,15 +22,6 @@
   &.contained {
     background: var(--main-bgColor);
     color: var(--main-color);
-
-    &:hover:not(:disabled) {
-      background: var(--main-hover-bgColor);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      background: var(--main-disabled-bgColor);
-    }
   }
 
   &.outlined {

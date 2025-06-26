@@ -18,17 +18,17 @@ export const TextField: React.FC<TextFieldProps> = ({
 
     return (
         <div className={`${styles.wrapper} ${className ? styles[className] : ''} ${error ? styles.error : ''}`}>
-            {(isFocused || value) && (
+            {placeholder && (
                 <label
-                    className={`${styles.label} ${isFocused || value ? styles.labelFocused : ''} ${error ? styles.errorLabel : ''}`}>
+                    className={`${styles.label}, ${isFocused || value ? [styles.labelFocused] : ''} ${error ? [styles.errorLabel] : ''}`}>
                     {placeholder}
                 </label>
-            )}
+            )
+            }
             <input
                 className={`${styles.textField}`}
                 value={value}
                 onChange={onChange}
-                placeholder={isFocused ? '' : placeholder}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 {...rest}
