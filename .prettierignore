@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+buildLib/
+
+webpack.config.ts
+webpack.lib.config.ts
