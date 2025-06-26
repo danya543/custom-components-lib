@@ -1,0 +1,42 @@
+:root {
+  --main-bgColor: #90caf9;
+  --main-color: white;
+}
+
+.button {
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &.text {
+    color: var(--main-bgColor);
+  }
+
+  &.contained {
+    background: var(--main-bgColor);
+    color: var(--main-color);
+  }
+
+  &.outlined {
+    border: 1px solid var(--main-bgColor);
+  }
+
+  &.large {
+    padding: 12px 17px;
+  }
+
+  &.medium {
+    padding: 10px 15px;
+  }
+
+  &.small {
+    padding: 6px 8px;
+  }
+}

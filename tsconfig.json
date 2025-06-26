@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
         "outDir": "./build/",
+        "declaration": true,
+        "declarationDir": "./build/types/",
         "noImplicitAny": true,
         "module": "ESNext",
         "target": "es5",
@@ -16,6 +18,9 @@
             ]
         }
     },
+    "include": [
+        "src/**/*"
+    ],
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"
