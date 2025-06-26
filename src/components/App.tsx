@@ -16,6 +16,8 @@ export const App = () => {
             <img src={A} alt="" />
             <img src={B} alt="" width={100} height={100} />
             <C color={'green'} width={100} height={100} />
+            <Link to={'/about'}>about</Link>
+            <Link to={'/shop'}>shop</Link>
             <h1>{count}</h1>
             <button className={styles.btn} onClick={handleCount}>count</button>
             <Outlet />
