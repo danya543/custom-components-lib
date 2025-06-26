@@ -13,35 +13,44 @@ jest.mock('./TextField.module.scss', () => ({
 }));
 
 describe('TextField component', () => {
-    it('renders with placeholder', () => {
+    it('renders input with placeholder attribute', () => {
         render(<TextField value="" placeholder="Your Name" onChange={() => { }} />);
+        const input = screen.getByPlaceholderText('Your Name');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders label when focused', () => {
+        render(<TextField value="" placeholder="Your Name" onChange={() => { }} />);
+        const input = screen.getByPlaceholderText('Your Name');
+        fireEvent.focus(input);
         expect(screen.getByText('Your Name')).toBeInTheDocument();
     });
 
-    it('label moves up when focused', () => {
+    it('label has focused class when focused', () => {
         render(<TextField value="" placeholder="Your Name" onChange={() => { }} />);
-        const input = screen.getByRole('textbox');
+        const input = screen.getByPlaceholderText('Your Name');
         fireEvent.focus(input);
         const label = screen.getByText('Your Name');
         expect(label.className).toContain('labelFocused');
     });
 
-    it('label stays up when value is present', () => {
+    it('label is visible and has focused class when value is present', () => {
         render(<TextField value="John" placeholder="Your Name" onChange={() => { }} />);
         const label = screen.getByText('Your Name');
+        expect(label).toBeInTheDocument();
         expect(label.className).toContain('labelFocused');
     });
 
-    it('applies error class when error prop is true', () => {
+    it('applies error class to wrapper when error prop is true', () => {
         render(<TextField value="" placeholder="Your Name" error onChange={() => { }} />);
-        const wrapper = screen.getByText('Your Name').parentElement;
+        const wrapper = screen.getByRole('textbox').parentElement;
         expect(wrapper?.className).toContain('error');
     });
 
     it('calls onChange when typing', () => {
         const handleChange = jest.fn();
         render(<TextField value="" placeholder="Your Name" onChange={handleChange} />);
-        const input = screen.getByRole('textbox');
+        const input = screen.getByPlaceholderText('Your Name');
         fireEvent.change(input, { target: { value: 'test' } });
         expect(handleChange).toHaveBeenCalledTimes(1);
     });
