@@ -1,5 +1,6 @@
 import { ModuleOptions } from "webpack";
 import { BuildOptions } from "./types/types";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     const isDev = options.mode === 'development';
@@ -40,7 +41,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     const scssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
-            'style-loader',
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
             cssLoader,
             // Compiles Sass to CSS
@@ -48,7 +49,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         ],
     };
     const tsLoader = {
-        test: /\.(ts|tsx)$/,
+        test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
     };
