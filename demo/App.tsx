@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '../src/components/Button/Button';
+import { Switch } from '../src/components/Switch/Switch';
 import { TextField } from '../src/components/TextField/TextField';
 import * as styles from './App.module.scss';
 
 export const App = () => {
-  const [value, setValue] = React.useState('');
-  const [value1, setValue1] = React.useState('');
+  const [value, setValue] = useState('');
+  const [value1, setValue1] = useState('');
+
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <div style={{ padding: '20px' }}>
@@ -86,6 +89,11 @@ export const App = () => {
             onChange={e => setValue1(e.target.value)}
             error={true}
           />
+        </div>
+
+        <div className={styles.part}>
+          <h3>Switch</h3>
+          <Switch checked={isChecked} onChange={setIsChecked} />
         </div>
       </div>
     </div>
