@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Button } from '../src/components/Button/Button';
+import { Select } from '../src/components/Select/Select';
 import { Switch } from '../src/components/Switch/Switch';
 import { TextField } from '../src/components/TextField/TextField';
 import * as styles from './App.module.scss';
@@ -10,6 +11,8 @@ export const App = () => {
   const [value1, setValue1] = useState('');
 
   const [isChecked, setIsChecked] = useState(false);
+
+  const [selected, setSelected] = React.useState<string | number | null>(null);
 
   return (
     <div style={{ padding: '20px' }}>
@@ -94,6 +97,21 @@ export const App = () => {
         <div className={styles.part}>
           <h3>Switch</h3>
           <Switch checked={isChecked} onChange={setIsChecked} />
+        </div>
+
+        <div className={styles.part}>
+          <h3>Select</h3>
+          <Select
+            label="Category"
+            value={selected}
+            onChange={setSelected}
+            options={[
+              { label: 'first', value: 1 },
+              { label: 'second', value: 2 },
+              { label: 'third', value: 3 },
+            ]}
+            placeholder="choose"
+          />
         </div>
       </div>
     </div>
