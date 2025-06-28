@@ -17,12 +17,13 @@
 }
 
 .labelFocused {
-    top: -8px;
+    top: 0;
     left: 8px;
     font-size: 12px;
     background: white;
     padding: 0 4px;
     color: #1976d2;
+    z-index: 1;
 }
 
 .select {
@@ -80,6 +81,7 @@
 }
 
 .disabled {
+    cursor: not-allowed;
     opacity: 0.6;
     pointer-events: none;
 }

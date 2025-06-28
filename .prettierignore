@@ -2,6 +2,7 @@ node_modules/
 dist/
 build/
 buildLib/
+src/stories/
 
 webpack.config.ts
 webpack.lib.config.ts

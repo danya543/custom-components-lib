@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, useState } from 'react';
 
 import * as styles from './Select.module.scss';
 
@@ -7,8 +7,7 @@ interface Option {
   value: string | number;
 }
 
-interface SelectProps {
-  label?: string;
+export interface SelectProps {
   value: string | number | null;
   onChange: (value: string | number) => void;
   options: Option[];
@@ -16,16 +15,15 @@ interface SelectProps {
   disabled?: boolean;
 }
 
-export const Select: React.FC<SelectProps> = ({
-  label = '',
+export const Select: FC<SelectProps> = ({
   value,
   onChange,
   options,
   placeholder = 'Choose...',
   disabled = false,
 }) => {
-  const [isFocused, setIsFocused] = React.useState(false);
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const selectedLabel = options.find(opt => opt.value === value)?.label;
 
@@ -48,19 +46,20 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div className={`${styles.wrapper} ${disabled ? styles.disabled : ''}`}>
-      {label && (
+      {placeholder && (
         <label
           className={`${styles.label} ${isFocused || value ? styles.labelFocused : ''}`}>
-          {label}
+          {placeholder}
         </label>
       )}
 
       <div
+      data-testid="select-toggle"
         className={styles.select}
         onClick={() => (isOpen ? handleBlur() : handleFocus())}>
         <span
           className={`${styles.selectedValue} ${!value ? styles.placeholder : ''}`}>
-          {selectedLabel || placeholder}
+          {!isOpen && (selectedLabel || placeholder)}
         </span>
         <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
       </div>

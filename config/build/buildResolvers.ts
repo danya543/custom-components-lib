@@ -1,3 +1,4 @@
+import * as path from'path'
 import { Configuration } from "webpack";
 
 import { BuildOptions } from "./types/types";

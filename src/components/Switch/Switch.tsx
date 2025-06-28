@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import * as styles from './Switch.module.scss';
 
@@ -8,7 +8,7 @@ interface SwitchProps {
   disabled?: boolean;
 }
 
-export const Switch: React.FC<SwitchProps> = ({
+export const Switch: FC<SwitchProps> = ({
   checked,
   onChange,
   disabled = false,

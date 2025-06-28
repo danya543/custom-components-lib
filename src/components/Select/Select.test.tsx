@@ -26,41 +26,26 @@ describe('Select component', () => {
   ];
 
   it('renders with placeholder when no value is selected', () => {
-    render(
-      <Select
-        label="Choose"
-        value={null}
-        onChange={() => {}}
-        options={options}
-      />,
-    );
-    expect(screen.getByText('Choose...')).toBeInTheDocument();
-    expect(screen.getByText('Choose')).toBeInTheDocument();
+    render(<Select value={null} onChange={() => {}} options={options} />);
+    expect(screen.getAllByText('Choose...').length).toBeGreaterThan(0);
+    expect(screen.getByTestId('select-toggle')).toHaveTextContent('Choose...');
   });
 
   it('renders selected value', () => {
-    render(
-      <Select label="Choose" value="2" onChange={() => {}} options={options} />,
-    );
+    render(<Select value="2" onChange={() => {}} options={options} />);
     expect(screen.getByText('Option 2')).toBeInTheDocument();
   });
 
   it('opens options list on click and selects option', () => {
     const handleChange = jest.fn();
-    render(
-      <Select
-        label="Choose"
-        value={null}
-        onChange={handleChange}
-        options={options}
-      />,
-    );
+    render(<Select value={null} onChange={handleChange} options={options} />);
 
-    const select = screen.getByText('Choose...');
-    fireEvent.click(select);
+    const toggle = screen.getByTestId('select-toggle');
+    fireEvent.click(toggle);
 
     expect(screen.getByText('Option 1')).toBeInTheDocument();
     expect(screen.getByText('Option 2')).toBeInTheDocument();
+    expect(screen.getByText('Option 3')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('Option 3'));
     expect(handleChange).toHaveBeenCalledWith('3');
@@ -70,7 +55,6 @@ describe('Select component', () => {
     const handleChange = jest.fn();
     render(
       <Select
-        label="Choose"
         value={null}
         onChange={handleChange}
         options={options}
@@ -78,7 +62,10 @@ describe('Select component', () => {
       />,
     );
 
-    fireEvent.click(screen.getByText('Choose...'));
+    const toggle = screen.getByTestId('select-toggle');
+    fireEvent.click(toggle);
+
     expect(screen.queryByText('Option 1')).not.toBeInTheDocument();
+    expect(handleChange).not.toHaveBeenCalled();
   });
 });

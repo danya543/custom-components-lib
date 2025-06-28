@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, useState } from 'react';
 
 import * as styles from './TextField.module.scss';
 
@@ -7,7 +7,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
 }
 
-export const TextField: React.FC<TextFieldProps> = ({
+export const TextField: FC<TextFieldProps> = ({
   value,
   placeholder = '',
   onChange,
@@ -15,7 +15,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   error = false,
   ...rest
 }) => {
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div
