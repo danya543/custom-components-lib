@@ -12,6 +12,14 @@ const prettier = require('eslint-plugin-prettier');
 
 export default defineConfig([
   {
+    ignores: [
+      'build',
+      'buildLib',
+      'stories',
+      'node_modules',
+      '*.config.js',
+      '*.config.cjs',
+    ],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 2020,

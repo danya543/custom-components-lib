@@ -5,6 +5,7 @@ import { TextField } from './TextField';
 const meta: Meta<typeof TextField> = {
   title: 'UI/TextField',
   component: TextField,
+  tags: ['autodocs'],
   argTypes: {
     value: {
       control: { type: 'text' },

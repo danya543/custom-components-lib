@@ -19,10 +19,12 @@ export const TextField: FC<TextFieldProps> = ({
 
   return (
     <div
-      className={`${styles.wrapper} ${className ? styles[className] : ''} ${error ? styles.error : ''}`}>
+      className={`${styles.wrapper} ${className ? styles[className] : ''} ${error ? styles.error : ''}`}
+    >
       {(isFocused || value) && (
         <label
-          className={`${styles.label} ${isFocused || value ? styles.labelFocused : ''} ${error ? styles.errorLabel : ''}`}>
+          className={`${styles.label} ${isFocused || value ? styles.labelFocused : ''} ${error ? styles.errorLabel : ''}`}
+        >
           {placeholder}
         </label>
       )}

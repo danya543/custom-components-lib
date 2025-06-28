@@ -8,11 +8,7 @@ interface SwitchProps {
   disabled?: boolean;
 }
 
-export const Switch: FC<SwitchProps> = ({
-  checked,
-  onChange,
-  disabled = false,
-}) => {
+export const Switch: FC<SwitchProps> = ({ checked, onChange, disabled = false }) => {
   const handleToggle = () => {
     if (disabled) return;
     onChange(!checked);
@@ -24,7 +20,8 @@ export const Switch: FC<SwitchProps> = ({
       aria-checked={checked}
       aria-disabled={disabled}
       className={`${styles.switch} ${checked ? styles.switch_checked : ''} ${disabled ? styles.switch_disabled : ''}`}
-      onClick={handleToggle}>
+      onClick={handleToggle}
+    >
       <div className={styles.switch_thumb} />
     </div>
   );

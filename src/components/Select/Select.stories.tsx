@@ -5,6 +5,7 @@ import { Select } from './Select';
 const meta: Meta<typeof Select> = {
   title: 'UI/Select',
   component: Select,
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       control: { type: 'text' },

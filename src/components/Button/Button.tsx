@@ -2,8 +2,7 @@ import { FC } from 'react';
 
 import * as styles from './Button.module.scss';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
   size: 'small' | 'medium' | 'large';
   variant?: 'text' | 'contained' | 'outlined';
@@ -23,7 +22,8 @@ export const Button: FC<ButtonProps> = ({
     <button
       className={`${styles.button} ${className ? styles[className] : ''} ${styles[size]} ${styles[variant]}`}
       onClick={onClick}
-      {...rest}>
+      {...rest}
+    >
       {children || text}
     </button>
   );

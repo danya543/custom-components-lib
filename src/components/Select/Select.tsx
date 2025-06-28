@@ -25,7 +25,7 @@ export const Select: FC<SelectProps> = ({
   const [isFocused, setIsFocused] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const selectedLabel = options.find(opt => opt.value === value)?.label;
+  const selectedLabel = options.find((opt) => opt.value === value)?.label;
 
   const handleOptionClick = (option: Option) => {
     if (disabled) return;
@@ -47,18 +47,17 @@ export const Select: FC<SelectProps> = ({
   return (
     <div className={`${styles.wrapper} ${disabled ? styles.disabled : ''}`}>
       {placeholder && (
-        <label
-          className={`${styles.label} ${isFocused || value ? styles.labelFocused : ''}`}>
+        <label className={`${styles.label} ${isFocused || value ? styles.labelFocused : ''}`}>
           {placeholder}
         </label>
       )}
 
       <div
-      data-testid="select-toggle"
+        data-testid="select-toggle"
         className={styles.select}
-        onClick={() => (isOpen ? handleBlur() : handleFocus())}>
-        <span
-          className={`${styles.selectedValue} ${!value ? styles.placeholder : ''}`}>
+        onClick={() => (isOpen ? handleBlur() : handleFocus())}
+      >
+        <span className={`${styles.selectedValue} ${!value ? styles.placeholder : ''}`}>
           {!isOpen && (selectedLabel || placeholder)}
         </span>
         <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
@@ -66,11 +65,12 @@ export const Select: FC<SelectProps> = ({
 
       {isOpen && (
         <div className={styles.options}>
-          {options.map(option => (
+          {options.map((option) => (
             <div
               key={option.value}
               className={styles.option}
-              onClick={() => handleOptionClick(option)}>
+              onClick={() => handleOptionClick(option)}
+            >
               {option.label}
             </div>
           ))}

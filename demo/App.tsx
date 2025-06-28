@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
-
-import { Button } from '@/components/Button/Button';
-import { Select } from '@/components/Select/Select';
-import { Switch } from '@/components/Switch/Switch';
-import { TextField } from '@/components/TextField/TextField';
+import { useState } from 'react';
 
 import * as styles from './App.module.scss';
+import { Checkbox,TextField,Switch,Select,Button } from '@/index';
 
 export const App = () => {
   const [value, setValue] = useState('');
@@ -13,6 +9,8 @@ export const App = () => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
 
   const [selected, setSelected] = useState<string | number | null>(null);
 
@@ -114,6 +112,12 @@ export const App = () => {
           ]}
           placeholder="Category"
         />
+      </div>
+
+      <div className={styles.part}>
+        <h3>Checkbox</h3>
+        <Checkbox checked={isChecked2} onChange={setIsChecked2} />
+        <Checkbox checked={isChecked3} onChange={setIsChecked3} disabled />
       </div>
     </div>
   );

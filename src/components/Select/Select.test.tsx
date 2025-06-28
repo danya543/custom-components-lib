@@ -53,14 +53,7 @@ describe('Select component', () => {
 
   it('disables interaction when disabled prop is true', () => {
     const handleChange = jest.fn();
-    render(
-      <Select
-        value={null}
-        onChange={handleChange}
-        options={options}
-        disabled
-      />,
-    );
+    render(<Select value={null} onChange={handleChange} options={options} disabled />);
 
     const toggle = screen.getByTestId('select-toggle');
     fireEvent.click(toggle);
