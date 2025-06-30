@@ -16,6 +16,9 @@ const meta: Meta<typeof TextField> = {
     error: {
       control: { type: 'boolean' },
     },
+    disabled: {
+      control: { type: 'boolean' },
+    },
     onChange: { action: 'change' },
   },
 };
@@ -28,6 +31,7 @@ export const Default: Story = {
     value: '',
     placeholder: 'Enter text',
     error: false,
+    disabled: false,
   },
 };
 
@@ -36,5 +40,6 @@ export const WithError: Story = {
     value: 'Invalid input',
     placeholder: 'Enter text',
     error: true,
+    disabled: false,
   },
 };

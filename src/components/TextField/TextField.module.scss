@@ -2,6 +2,12 @@
     position: relative;
     display: inline-block;
     width: 200px;
+
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
 }
 
 .textField {
@@ -19,6 +25,8 @@
 
     &:disabled {
         cursor: not-allowed;
+        background-color: #f5f5f5;
+        color: #777;
     }
 
     &:focus {

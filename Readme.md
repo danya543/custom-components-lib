@@ -86,7 +86,7 @@ Storybook serves as your live playground and documentation hub.
 
 - Open your browser at http://localhost:6006 to view all components with interactive controls and docs.
 
-- Write stories inside the src/stories directory or co-located alongside components.
+- Write stories co-located alongside components.
 
 ### Build
 

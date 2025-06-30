@@ -5,6 +5,7 @@ import * as styles from './TextField.module.scss';
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string;
   error?: boolean;
+  disabled?: boolean;
 }
 
 export const TextField: FC<TextFieldProps> = ({
@@ -13,13 +14,14 @@ export const TextField: FC<TextFieldProps> = ({
   onChange,
   className = '',
   error = false,
+  disabled = false,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div
-      className={`${styles.wrapper} ${className ? styles[className] : ''} ${error ? styles.error : ''}`}
+      className={`${styles.wrapper} ${className ? styles[className] : ''} ${error ? styles.error : ''} ${disabled ? styles.disabled : ''}`}
     >
       {(isFocused || value) && (
         <label
@@ -35,6 +37,7 @@ export const TextField: FC<TextFieldProps> = ({
         placeholder={isFocused ? '' : placeholder}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        disabled={disabled}
         {...rest}
       />
     </div>
