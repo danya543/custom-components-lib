@@ -1,12 +1,14 @@
-# @danya543/custom-components-lib
+# [@danya543/custom-components-lib](https://www.npmjs.com/package/@danya543/custom-components-lib)
 
 A modern, reusable React component library with TypeScript support, Storybook documentation, and easy integration into your projects.
 
 ---
+# [Deploy](custom-lib.netlify.app)
 
 ## Table of Contents
 
 - [@danya543/custom-components-lib](#danya543custom-components-lib)
+- [Deploy](#deploy)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Features](#features)
@@ -60,8 +62,11 @@ import { Button, Modal } from '@danya543/custom-components-lib';
 function App() {
   return (
     <div>
-      <Button onClick={() => alert('Clicked!')}>Click me</Button>
-      <Modal isOpen={true}>Hello from Modal</Modal>
+      <Button onClick={() => setOpen(true)} size={'large'}>open modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <h2>Hi!</h2>
+        <p>It's modal window</p>
+      </Modal>
     </div>
   );
 }
@@ -95,6 +100,12 @@ npm run build:prod
 
 - The output is placed in the build folder, ready to publish or consume locally.
 
+- And for local starting project
+
+```
+npm run start
+```
+
 ### Linting
 
 Linting with ESLint and auto-fixing with Prettier is configured for consistent code style:
@@ -116,14 +127,22 @@ npm run lint:fix
 
 ```
 custom-components-lib/
-├── dist/                  # Compiled production builds
+├── build/                  # Compiled production builds
+├── buildLib/                  # Compiled production builds library
+├── demo/
+│   ├── App.tsx            # Main component
+│   ├── App.module.scss    # Styles for main component
+│   ├── index.ts           # Main entry for demo
 ├── src/
 │   ├── components/        # React components (Button, Modal, etc.)
-│   ├── stories/           # Storybook stories
+│   ├── globals.d.ts       # Global declare for files
 │   ├── index.ts           # Main entry exporting components
-├── .eslintrc.js           # ESLint configuration
-├── prettier.config.js     # Prettier formatting config
-├── rollup.config.js       # Bundler config
+├── .eslint.config.mjs     # ESLint configuration
+├── .prettierrc            # Prettier formatting config
+├── webpack.config.js      # Bundler prod config
+├── webpack.lib.config.js  # Bundler lib config
+├── jest.config.ts         # Config for tests
+├── tsconfig.json          # Config for typescript
 ├── package.json           # npm package metadata & scripts
 └── README.md              # This file
 ```
