@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import * as styles from './App.module.scss';
 import { Checkbox,TextField,Switch,Select,Button } from '@/index';
+import { Modal } from '@/components/Modal/Modal';
 
 export const App = () => {
   const [value, setValue] = useState('');
@@ -13,6 +14,8 @@ export const App = () => {
   const [isChecked3, setIsChecked3] = useState(false);
 
   const [selected, setSelected] = useState<string | number | null>(null);
+
+  const [open, setOpen] = useState(false);
 
   return (
     <div style={{ padding: '20px' }}>
@@ -118,6 +121,14 @@ export const App = () => {
         <h3>Checkbox</h3>
         <Checkbox checked={isChecked2} onChange={setIsChecked2} />
         <Checkbox checked={isChecked3} onChange={setIsChecked3} disabled />
+      </div>
+
+      <div className={styles.part}>
+      <Button onClick={() => setOpen(true)} size={'large'}>open modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <h2>Hi!</h2>
+        <p>It's modal window</p>
+      </Modal>
       </div>
     </div>
   );
