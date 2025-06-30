@@ -5,17 +5,20 @@ A modern, reusable React component library with TypeScript support, Storybook do
 ---
 # [Deploy](custom-lib.netlify.app)
 
+# [Storybook](custom-lib-storybook.netlify.app)
+
 ## Table of Contents
 
 - [@danya543/custom-components-lib](#danya543custom-components-lib)
 - [Deploy](#deploy)
+- [Storybook](#storybook)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Features](#features)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Development](#development)
-    - [Storybook](#storybook)
+    - [Storybook](#storybook-1)
     - [Build](#build)
     - [Linting](#linting)
   - [Library Structure](#library-structure)
