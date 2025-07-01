@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { TextField } from './TextField';
 
@@ -7,9 +8,6 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
   tags: ['autodocs'],
   argTypes: {
-    value: {
-      control: { type: 'text' },
-    },
     placeholder: {
       control: { type: 'text' },
     },
@@ -19,7 +17,6 @@ const meta: Meta<typeof TextField> = {
     disabled: {
       control: { type: 'boolean' },
     },
-    onChange: { action: 'change' },
   },
 };
 
@@ -27,8 +24,12 @@ export default meta;
 type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('');
+
+    return <TextField {...args} value={value} onChange={(e) => setValue(e.target.value)} />;
+  },
   args: {
-    value: '',
     placeholder: 'Enter text',
     error: false,
     disabled: false,
@@ -36,8 +37,12 @@ export const Default: Story = {
 };
 
 export const WithError: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('Invalid input');
+
+    return <TextField {...args} value={value} onChange={(e) => setValue(e.target.value)} />;
+  },
   args: {
-    value: 'Invalid input',
     placeholder: 'Enter text',
     error: true,
     disabled: false,
