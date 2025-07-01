@@ -6,15 +6,16 @@
   "types": "buildLib/types/src/index.d.ts",
   "scripts": {
     "start": "webpack serve --env mode=development --config webpack.config.ts",
+    "storybook": "storybook dev -p 6006",
     "build": "webpack --env mode=development --config webpack.config.ts",
     "build:prod": "webpack --env mode=production --config webpack.config.ts",
     "build:lib": "webpack --config webpack.lib.config.ts",
+    "build:storybook": "storybook build",
     "test": "jest",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.ts(x)?\"",
-    "storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build"
+    "pre-commit": "npm run lint:fix && npm run format && git add . && npm run build:prod && npm run build:lib && npm run build:storybook"
   },
   "keywords": [],
   "author": "",
