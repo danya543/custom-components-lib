@@ -8,8 +8,13 @@
 # testing
 /coverage
 
+# storybook build output
+storybook-static/
+.storybook/out/
+
 # production
 /build
+/buildLib
 
 # misc
 .DS_Store
@@ -21,3 +26,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*storybook.log
+storybook-static

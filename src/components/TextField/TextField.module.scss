@@ -1,0 +1,70 @@
+.wrapper {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}
+
+.textField {
+    width: 100%;
+    padding: 10px 12px 6px 12px;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover:not(:disabled) {
+        border-color: #888;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: #f5f5f5;
+        color: #777;
+    }
+
+    &:focus {
+        border-color: #3f51b5;
+        box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+    }
+}
+
+.label {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-size: 16px;
+    color: #aaa;
+    transition: 0.2s ease all;
+    background: white;
+    padding: 0 4px;
+    transition: top ease-in-out 1s;
+}
+
+.labelFocused {
+    transition: top ease-in-out 1s;
+    top: -7px;
+    font-size: 12px;
+    color: #3f51b5;
+}
+
+.error {
+    .textField {
+        border-color: #f44336;
+
+        &:focus {
+            border-color: #f44336;
+            box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+        }
+    }
+}
+
+.errorLabel {
+    color: #f44336;
+}

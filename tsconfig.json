@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
         "outDir": "./build/",
+        "declaration": true,
+        "declarationDir": "./build/types/",
         "noImplicitAny": true,
         "module": "ESNext",
         "target": "es5",
@@ -13,9 +15,18 @@
         "paths": {
             "@/*": [
                 "./src/*"
-            ]
-        }
+            ]  
+        },
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules"
+            }
+        ]
     },
+    "include": [
+        "src/**/*",
+        "demo/**/*"
+    ],
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"
