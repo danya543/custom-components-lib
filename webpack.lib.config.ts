@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import CopyPlugin from 'copy-webpack-plugin';
 
 export default () => {
     const config: webpack.Configuration = {
@@ -49,7 +50,20 @@ export default () => {
             react: 'commonjs react',
             'react-dom': 'commonjs react-dom',
         },
-        plugins: [],
+        plugins: [
+            new CopyPlugin({
+                patterns: [
+                  {
+                    from: 'src/**/*.module.scss',
+                    to: ({ context, absoluteFilename }) => {
+                        if (!absoluteFilename) return '';
+                        const relativePath = absoluteFilename.replace(context + '\\', '').replace(context + '/', '');
+                        return `components/${relativePath.split('components')[1]}`;
+                    },
+                  },
+                ],
+              }),
+        ],
     };
     return config;
 };
