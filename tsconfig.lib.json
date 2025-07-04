@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+      "outDir": "./buildLib",
+      "declaration": true,
+      "declarationDir": "./buildLib/types",
+      "noImplicitAny": true,
+      "module": "ESNext",
+      "target": "ESNext",
+      "jsx": "react-jsx",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"]
+      },
+      "plugins": [
+        {
+          "name": "typescript-plugin-css-modules"
+        }
+      ],
+      "skipLibCheck": true,
+      "isolatedModules": true,
+      "resolveJsonModule": true,
+      "strict": true,
+      "types": ["react", "react-dom"]
+    },
+    "include": ["src/**/*"],
+    "exclude": [
+        "node_modules", 
+        "build",
+        "dist",
+        "demo",
+        "components",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.stories.tsx"
+    ],
+    "ts-node": {
+      "compilerOptions": {
+        "module": "CommonJS"
+      }
+    }
+  }
+  
